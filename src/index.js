@@ -7,6 +7,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import theme from "./theme";
+import { CssBaseline } from "@mui/material";
 
 const cache = createCache({
   key: "css",
@@ -17,6 +18,7 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CacheProvider value={cache}>
+        <CssBaseline />
         <App />
       </CacheProvider>
     </ThemeProvider>
