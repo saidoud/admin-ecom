@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { CssBaseline } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 
@@ -12,12 +12,14 @@ const cache = createCache({
   prepend: true,
 });
 
+const dashboardTheme = createTheme();
 ReactDOM.render(
   <React.StrictMode>
-    <CacheProvider value={cache}>
-      <CssBaseline />
-      <App />
-    </CacheProvider>
+    <ThemeProvider theme={dashboardTheme}>
+      <CacheProvider value={cache}>
+        <App />
+      </CacheProvider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
