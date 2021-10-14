@@ -3,19 +3,19 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
+import theme from "./theme";
 
 const cache = createCache({
   key: "css",
   prepend: true,
 });
 
-const dashboardTheme = createTheme();
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={dashboardTheme}>
+    <ThemeProvider theme={theme}>
       <CacheProvider value={cache}>
         <App />
       </CacheProvider>
