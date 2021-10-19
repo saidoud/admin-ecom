@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import {
@@ -44,27 +44,28 @@ function SignIn() {
         }) => (
           <Box sx={{ mt: 1 }} component="form" onSubmit={handleSubmit}>
             <TextField
-              error={touched["email"]}
               onChange={handleChange}
               onBlur={handleBlur}
-              helperText={errors["email"]}
+              value={values.email}
               margin="normal"
               fullWidth
               id="email"
               label="Email Address"
               name="email"
+              error={touched.email && Boolean(errors.email)}
+              helperText={touched.email && errors.email}
             />
             <TextField
-              error={touched["password"]}
               onChange={handleChange}
               onBlur={handleBlur}
-              helperText={errors["password"]}
               id="password"
               label="Password"
               name="password"
               type="password"
               fullWidth
               margin="normal"
+              error={touched.password && Boolean(errors.password)}
+              helperText={touched.password && errors.password}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -75,7 +76,7 @@ function SignIn() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={() => console.log(touched["email"])}
+              onClick={() => setError(false)}
             >
               Sign In
             </Button>
